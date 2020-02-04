@@ -11,7 +11,8 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		const savedPalettes = JSON.parse(window.localStorage.getItem('palettes'));
-		this.state = { palettes: savedPalettes || seedColors };
+		console.log(savedPalettes);
+		this.state = { palettes: savedPalettes.length !== 0 ? savedPalettes : seedColors };
 		this.savePalette = this.savePalette.bind(this);
 		this.findPalette = this.findPalette.bind(this);
 		this.deletePalette = this.deletePalette.bind(this);
@@ -44,7 +45,7 @@ class App extends React.Component {
 					exact
 					path="/palette/new"
 					render={(routeProps) => (
-						<NewPaletteForm savePalette={this.savePalette} palettes={seedColors} {...routeProps} />
+						<NewPaletteForm savePalette={this.savePalette} palettes={this.state.palettes} {...routeProps} />
 					)}
 				/>
 				<Route
