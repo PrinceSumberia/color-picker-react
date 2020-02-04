@@ -18,7 +18,7 @@ class App extends React.Component {
 	}
 
 	findPalette(id) {
-		return this.state.palettes.find(function(palette) {
+		return this.state.palettes.find((palette) => {
 			return palette.id === id;
 		});
 	}
@@ -44,7 +44,7 @@ class App extends React.Component {
 					exact
 					path="/palette/new"
 					render={(routeProps) => (
-						<NewPaletteForm savePalette={this.savePalette} palettes={this.state.palettes} {...routeProps} />
+						<NewPaletteForm savePalette={this.savePalette} palettes={seedColors} {...routeProps} />
 					)}
 				/>
 				<Route
