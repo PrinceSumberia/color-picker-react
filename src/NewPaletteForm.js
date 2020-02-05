@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
-import DraggableColorList from './DraggableColorList';
 import arrayMove from 'array-move';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
@@ -11,6 +10,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { Button } from '@material-ui/core';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
+import DraggableColorList from './DraggableColorList';
 import styles from './styles/NewPaletteFormStyles';
 
 class NewPaletteForm extends Component {
@@ -72,14 +72,15 @@ class NewPaletteForm extends Component {
 
 	addRandomColor() {
 		const allColors = this.props.palettes.map((palette) => palette.colors).flat();
-		let rand, randomColor;
+		let rand, newColor;
 		let isDuplicateColor = true;
 		while (isDuplicateColor) {
 			rand = Math.floor(Math.random() * allColors.length);
-			randomColor = allColors[rand];
+			let randomColor = allColors[rand];
+			newColor = randomColor;
 			isDuplicateColor = this.state.colors.some((color) => color.name === randomColor.name);
 		}
-		this.setState({ colors: [ ...this.state.colors, randomColor ] });
+		this.setState({ colors: [ ...this.state.colors, newColor ] });
 	}
 
 	render() {

@@ -104,7 +104,8 @@ export default {
 		fontSize: '4rem',
 		transform: 'scale(0.1)',
 		opacity: '0',
-		color: 'white'
+		color: 'white',
+		zIndex: '-5'
 	},
 	showMessage: {
 		opacity: '1',
